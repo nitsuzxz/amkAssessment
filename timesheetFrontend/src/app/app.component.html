@@ -1,0 +1,45 @@
+<div class="search-container">
+  <div class="search-wrapper">
+    <label for="filterTask">Task</label>
+    <input pInputText id="filterTask" [(ngModel)]="searchTask" />
+  </div>
+
+  <div class="button-wrapper">
+    <p-button label="Search" (click)="filterData()"></p-button>
+    <p-button label="Create"  (click)="openTimesheetForm(true)"></p-button>
+  </div>
+</div>
+<app-timesheet-form [showModal]="showTimesheetForm" [updateTimesheetData]="updateData" (closeModal)="closeModal()"></app-timesheet-form>
+<div class="search-container">
+  <p-table
+    [columns]="cols"
+    [value]="filteredTimesheetData"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns" id="{{ col.header }}">
+          {{ col.header }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td>{{ rowData.timesheet.project }}</td>
+        <td>{{ rowData.timesheet.task }}</td>
+        <td>{{ rowData.timesheet.dateFrom |date:'dd-MM-yyyy'}}</td>
+        <td>{{ rowData.timesheet.dateTo | date:'dd-MM-yyyy' }}</td>
+        <td>{{ rowData.user?.name }}</td>
+        <td>{{ rowData.status.statusDescription }}</td>
+        <td>
+          <i
+            class="pi pi-file-edit"
+            style="font-size: 1.5rem; margin-right: 10px; cursor: pointer"
+            (click)="updateTimesheet(true,rowData)"
+          ></i>
+          <i class="pi pi-trash" style="font-size: 1.5rem; cursor: pointer" (click)="deleteTimesheet(rowData.timesheet.timesheetID)"></i>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

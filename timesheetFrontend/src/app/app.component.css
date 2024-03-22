@@ -1,0 +1,48 @@
+.search-container {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+
+    ::ng-deep .p-inputtext {
+        height: 35px !important;
+        width: 350px !important;
+    }
+}
+
+label {
+    margin-right: 10px;
+    vertical-align: text-bottom !important;
+}
+
+.search-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin: auto;
+    text-align: center
+}
+
+::ng-deep .p-button {
+    height: 30px !important;
+    margin-top: 50px;
+}
+
+
+
+.button-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    margin: auto;
+    text-align: center
+}
+
+
+
+button {
+    cursor: pointer;
+}

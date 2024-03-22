@@ -1,0 +1,51 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 10px
+}
+
+label {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.p-inputtext {
+    width: 250px !important;
+}
+
+.date-input {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 400px;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+    gap: 20px;
+  }
+::ng-deep.p-calendar .p-inputtext {
+    width: 250px !important;
+}
+
+::ng-deep .p-calendar {
+    width: 150px;
+}
+::ng-deep .p-dropdown {
+    width: 250px;
+}
+
+
+:host ::ng-deep .p-datepicker {
+    transform: scale(0.8);
+}
+
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    color:red
+}

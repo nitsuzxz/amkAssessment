@@ -1,0 +1,124 @@
+<div class="card flex justify-content-center">
+  <p-dialog
+    [header]="formTitle"
+    [(visible)]="showModal"
+    [modal]="true"
+    [style]="{ height: '650px', minWidth: '1000px' }"
+    [draggable]="false"
+    [resizable]="false"
+    [closable]="true"
+    (onHide)="onCloseModal()"
+  >
+    <form [formGroup]="timesheetForm">
+      <div class="row">
+        <label for="project">Project</label>
+        <div class="input-wrapper">
+          <input pInputText id="project" formControlName="project" />
+          <span
+            *ngIf="
+              timesheetForm.get('project')?.invalid &&
+              timesheetForm.get('project')?.touched
+            "
+          >
+            Please fill in the Project field.
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <label for="task">Task</label>
+        <div class="input-wrapper">
+          <input pInputText id="task" formControlName="task" />
+          <span
+            *ngIf="
+              timesheetForm.get('task')?.invalid &&
+              timesheetForm.get('task')?.touched
+            "
+          >
+            Please fill in the Task field.
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="date-input">
+          <label for="dateFrom">Date From</label>
+
+          <div class="input-wrapper">
+            <p-calendar formControlName="dateFrom"></p-calendar>
+            <span
+              *ngIf="
+                timesheetForm.get('dateFrom')?.invalid &&
+                timesheetForm.get('dateFrom')?.touched
+              "
+            >
+              Please select the Date from field.
+            </span>
+          </div>
+        </div>
+
+        <div class="date-input">
+          <label for="dateTo">Date To</label>
+          <div class="input-wrapper">
+            <p-calendar formControlName="dateTo"></p-calendar>
+            <span
+              *ngIf="
+                timesheetForm.get('dateTo')?.invalid &&
+                timesheetForm.get('dateTo')?.touched
+              "
+            >
+              Please select the Date to field.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <label for="status">Status</label>
+
+        <div class="input-wrapper">
+          <p-dropdown
+            formControlName="status"
+            [options]="listStatus"
+            optionLabel="statusDescription"
+            optionValue="statusID"
+            placeholder="Select a status"
+          ></p-dropdown>
+          <span
+            *ngIf="
+              timesheetForm.get('status')?.invalid &&
+              timesheetForm.get('status')?.touched
+            "
+          >
+            Please select the Status field.
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="assignTo">Assign To</label>
+
+        <div class="input-wrapper">
+          <p-dropdown
+            formControlName="assignTo"
+            [options]="listUser"
+            optionLabel="name"
+            optionValue="userID"
+            placeholder="Select a User"
+          ></p-dropdown>
+          <span
+            *ngIf="
+              timesheetForm.get('assignTo')?.invalid &&
+              timesheetForm.get('assignTo')?.touched
+            "
+          >
+            Please select the User field.
+          </span>
+        </div>
+      </div>
+
+      <div class="button-wrapper">
+        <p-button label="Save" (click)="saveTimesheet()"></p-button>
+        <p-button label="Close" (click)="onCloseModal()"></p-button>
+      </div>
+    </form>
+  </p-dialog>
+</div>
